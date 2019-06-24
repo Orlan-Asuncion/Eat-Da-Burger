@@ -1,7 +1,16 @@
 # Eat-Da-Burger
 
-## OVERVIEW
+## Overview
 
-##
+
 
 ## Technologies Used
+
+* Packages
+    - Express
+    - Express-handlebars
+    - MySQL
+    - body-parser
+    
+
+

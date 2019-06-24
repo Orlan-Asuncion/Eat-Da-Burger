@@ -1,14 +1,28 @@
-var coonnection = require("../config/connection");
+var connection = require("../config/connection");
 
-function createQmarks(num){var = [];
+function createQmarks(num){var arr= [];
     for (var i = 0; i < num; i++){
-        Array.push("?");
+        arr.push("?");
     }
-    return Array.toString();
+    return arr.toString();
 }
 
-var orm ={
-    selectAll: function(table, cd){
+function translateSql(ob){
+    var arr = [];
+    for(var key in ob){
+        var value = ob[key];
+        if (Object.hasOnProperty.cal(o, key)){
+            if(typeof value === "string" && value.indexOf(" ") >= 0){
+                value ="'" + value + "'";
+            }
+            arr.push(key + "=" + value);
+        }
+    }
+    return arr.toString();
+}
+
+var orm = {
+    selectAll: function(table, cb){
         var dbQuery = "SELECT * FROM " + table + ";";
 
         connection.query(dbQuery, function(err, res){
@@ -17,11 +31,11 @@ var orm ={
             }
         cb(res);
     });
-}
+},
 insertOne: function(table, cols, vals,cb){
-    var dbQuery = "INSERT INTO" +
+    var dbQuery = "INSERT INTO " +
     table +
-    " ("+ close.toString() + ") "; +
+    " ("+ cols.toString() + ") "; +
     "VALUES (" + createQmarks(vals.length) + ") ";
 
     console.log(dbQuery);
@@ -31,12 +45,12 @@ insertOne: function(table, cols, vals,cb){
         }
         cb(res);
     });
-}
+},
 updateOne : function(table,objColVals, condition, cb){
     var dbQuery = "UPDATE " +
     table +
     " SET " +
-    translateSQL(objColVals) +
+    translateSql(objColVals) +
     " WHERE" +
     condition;
 
@@ -48,8 +62,8 @@ updateOne : function(table,objColVals, condition, cb){
         cb(res);
     });
 },
-deleteOne: function(table,condtion, cb){
-    var dbQuery = "DELETE FROM" + table + " WHERE " + condtion;
+deleteOne: function(table,condition, cb){
+    var dbQuery = "DELETE FROM" + table + " WHERE " + condition;
     console.log(dbQuery);
     connection.query(dbQuery, function(err, res){
         if (err){
@@ -57,4 +71,6 @@ deleteOne: function(table,condtion, cb){
         }
         cb(res);
     });    
-}
+    }
+};
+module.exports =orm;
