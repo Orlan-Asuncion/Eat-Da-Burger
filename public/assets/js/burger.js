@@ -19,7 +19,7 @@
            data: newBurger
         }).then (function(){
            console.log(" Added new burger");
-         //   location.reload();
+           location.reload();
         });
      });
      $(".eatburger").on("click", function(event){
