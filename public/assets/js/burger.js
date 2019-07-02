@@ -45,7 +45,7 @@
         // send the DELETE request
         $.ajax({
            type: "DELETE",
-           url: "/api/burgers/" + id
+           url: "/delete/" + id
         }).then(location.reload());
      });
   });    

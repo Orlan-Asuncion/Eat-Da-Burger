@@ -28,7 +28,7 @@ module.exports = function (app) {
         );
     });
     app.put("/api/burgers/:id", function (req, res) {
-        var condition = "id = " + req.params.id;
+        var condition = " id = " + req.params.id;
         console.log("condition", condition);
         burger.updateOne({ devoured: req.body.devoured }, condition, function (
             result) {
@@ -39,11 +39,11 @@ module.exports = function (app) {
             }
         });
     });
-    app.get("/delete/:id", function (req, res) {
-        var condition = "id =" + req.params.id;
+    app.delete("/delete/:id", function (req, res) {
+        var condition = " id =" + req.params.id;
         console.log("condition", condition);
 
-        burgers.delteOne(condition, function (result) {
+        burger.deleteOne(condition, function (result) {
             if (result.changedRows === 0) {
                 return res.status(404).end();
             } else {

@@ -12,12 +12,12 @@ function translateSql(ob) {
     var arr = [];
     for (var key in ob) {
         var value = ob[key];
-        if (Object.hasOnProperty.call(ob, key)) {
+        // if (Object.hasOnProperty.call(ob, key)) {
             if (typeof value === "string" && value.indexOf(" ") >= 0) {
                 value = "'" + value + "'";
             }
             arr.push(key + "=" + value);
-        }
+        // }
     }
     return arr.toString();
 }
@@ -36,7 +36,7 @@ var orm = {
     insertOne: function(table, cols, vals, cb) {
         var dbQuery = "INSERT INTO " +
             table +
-            " (" + cols.toString() + ") "; +
+            " (" + cols.toString() + ") " +
                 "VALUES (" + createQmarks(vals.length) + ") ";
 
         console.log(dbQuery);
@@ -66,7 +66,7 @@ updateOne: function (table, objColVals, condition, cb) {
         });
     },
 deleteOne: function (table, condition, cb) {
-        var dbQuery = "DELETE FROM" + table + " WHERE " + condition;
+        var dbQuery = "DELETE FROM " + table + " WHERE " + condition;
         console.log(dbQuery);
         connection.query(dbQuery, function (err, res) {
             if (err) {
