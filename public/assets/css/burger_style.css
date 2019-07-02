@@ -1,6 +1,5 @@
 .container{
     background-color: orange;
-    background-image: url("/assets/img/burger.jpg");
-    background-size: cover;
+    background-image: url("/assets/img/sonic_mushroom_beef_burger.jpg");
+    /* background-size: cover; */
 }
-
