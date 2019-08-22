@@ -15,4 +15,4 @@ This app demonstrate a simple full stack application with the front end implemen
 
 ## Deploy to Heroku
 
-    - Click on the Link to access work in Heroku: [link](https://hidden-river-95103.herokuapp.com/)
+ * Click on the Link to access work in Heroku: [link](https://hidden-river-95103.herokuapp.com/)
